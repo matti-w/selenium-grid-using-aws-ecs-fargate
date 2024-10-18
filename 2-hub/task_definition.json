@@ -1,0 +1,30 @@
+[
+  {
+    "name": "${task_definition_name}",
+    "image": "${docker_image_url}",
+    "essential": true,
+    "portMappings": [{
+      "containerPort": 4442,
+      "hostPort": 4442,
+      "protocol": "tcp"
+    },
+    {
+      "containerPort": 4443,
+      "hostPort": 4443,
+      "protocol": "tcp"
+    },
+    {
+      "containerPort": 4444,
+      "hostPort": 4444,
+      "protocol": "tcp"
+    }],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${ecs_service_name}-LogGroup",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "${ecs_service_name}-LogGroup-stream"
+      }
+    }
+  }
+]

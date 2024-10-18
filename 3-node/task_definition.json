@@ -1,0 +1,32 @@
+[
+  {
+    "name": "${task_definition_name}",
+    "image": "${docker_image_url}",
+    "essential": true,
+    "environment": [{
+      "name": "SE_EVENT_BUS_HOST",
+      "value": "selenium-hub.selenium-grid"
+    },
+    {
+      "name": "SE_EVENT_BUS_PUBLISH_PORT",
+      "value": "4442"
+    },
+    {
+      "name": "SE_EVENT_BUS_SUBSCRIBE_PORT",
+      "value": "4443"
+    }],
+    "portMappings": [{
+      "containerPort": 5555,
+      "hostPort": 5555,
+      "protocol": "tcp"
+    }],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${ecs_service_name}-LogGroup",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "${ecs_service_name}-LogGroup-stream"
+      }
+    }
+  }
+]
