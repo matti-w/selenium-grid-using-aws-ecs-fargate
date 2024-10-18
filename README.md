@@ -1,4 +1,4 @@
-# selenium-grid-using-aws-ecs-fargate
+# Selenium grid using AWS ECS Fargate
 This repository sets up a scalable Selenium Grid on AWS using ECS and Terraform. The execution steps are structured as follows: first, provision the infrastructure, then deploy the Hub, and finally the Nodes.
 
 ### Requirements
